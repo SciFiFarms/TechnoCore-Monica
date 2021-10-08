@@ -1,21 +1,21 @@
 version: "3.5"
 secrets:
-  mqtt_example_service_password:
-    name: ${STACK_NAME:-technocore}_mqtt_example_service_password
+  mqtt_monica_password:
+    name: ${STACK_NAME:-technocore}_mqtt_monica_password
     external: true
-  example_service_mqtt_password:
-    name: ${STACK_NAME:-technocore}_example_service_mqtt_password
+  monica_mqtt_password:
+    name: ${STACK_NAME:-technocore}_monica_mqtt_password
     external: true
 
 services:
   mqtt:
     networks:
-      - example_service
+      - monica
     secrets:
-      - source: mqtt_example_service_password
-        target: users/example_service
+      - source: mqtt_monica_password
+        target: users/monica
 
-  example_service:
+  monica:
     secrets:
-      - source: example_service_mqtt_password
+      - source: monica_mqtt_password
         target: mqtt_password

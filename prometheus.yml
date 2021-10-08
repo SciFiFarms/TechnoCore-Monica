@@ -1,12 +1,12 @@
 version: "3.5"
 networks:
-  example_service-prometheus:
+  monica-prometheus:
 
 services:
   prometheus:
     networks:
-      - example_service-prometheus
+      - monica-prometheus
 
-  example_service:
+  monica:
     networks:
-      - example_service-prometheus
+      - monica-prometheus
