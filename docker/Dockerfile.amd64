@@ -1,4 +1,4 @@
-FROM monica:3.2
+FROM monica:3.3
 # TO add bash to a minimal image:
 #FROM vault:1.1.1 as base
 #FROM alpine:3.10

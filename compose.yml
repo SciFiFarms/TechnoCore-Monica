@@ -61,9 +61,10 @@ services:
       - DB_DATABASE=monica
       - DB_USERNAME=monica
       - DB_PASSWORD={{"{{DOCKER-SECRET:monica_db_password}}"}}
-      - APP_URL=http://monica.$DOMAIN
+      - APP_URL=https://monica.$DOMAIN
+      - APP_TRUSTED_PROXIES=*
+      - APP_DISABLE_SIGNUP=false
       - APP_ENV=production
-      - APP_KEY={{"{{DOCKER-SECRET:admin_password}}"}}
     image: ${image_provider:-scififarms}/technocore-monica:${TAG:-latest}
     logging:
       driver: "${LOGGING_DRIVER}"
@@ -103,8 +104,6 @@ services:
     networks:
       - monica-private
     secrets:
-      - source: monica_admin_password
-        target: admin_password
       - source: monica_db_monica_password
         target: monica_password
     volumes:
